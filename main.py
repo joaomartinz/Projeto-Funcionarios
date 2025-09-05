@@ -28,7 +28,7 @@ def main():
     for dept_data in departamentos:
         dept = Departamento(dept_data['id'], dept_data['nome'])
         empresa.cadastrar_departamento(dept)
-        
+
     for func_data in funcionarios:
         func = Funcionario(func_data['id'], func_data['data_registro'], func_data['salario'], func_data['departamento_id'], func_data['nome'], func_data['idade'], func_data['cargo'])
         empresa.cadastrar_funcionario(func)
@@ -55,6 +55,16 @@ def main():
             cargo = input("Cargo: ")
             novo_funcionario = Funcionario(id, data_registro, salario, departamento_id, nome, idade, cargo)
             empresa.cadastrar_funcionario(novo_funcionario)
+            funcionarios.append({
+                "id": id,
+                "data_registro": data_registro,
+                "salario": salario,
+                "departamento_id": departamento_id,
+                "nome": nome,
+                "idade": idade,
+                "cargo": cargo
+            }) 
+            salvar_dados(funcionarios, departamentos) 
             print("Funcionário cadastrado com sucesso!")
 
         elif escolha == "2":
@@ -62,6 +72,11 @@ def main():
             nome = input("Nome do Departamento: ")
             novo_departamento = Departamento(id, nome)
             empresa.cadastrar_departamento(novo_departamento)
+            departamentos.append({
+                "id": id,
+                "nome": nome
+            })
+            salvar_dados(funcionarios, departamentos)
             print("Departamento cadastrado com sucesso!")
 
         elif escolha == "3":
@@ -87,6 +102,8 @@ def main():
             funcionario = empresa.buscar_funcionario_por_id(id)
             if funcionario:
                 empresa.remover_funcionario(funcionario)
+                funcionarios = [f for f in funcionarios if f['id'] != id]
+                salvar_dados(funcionarios, departamentos)
                 print("Funcionário removido com sucesso!")
             else:
                 print("Funcionário não encontrado.")
