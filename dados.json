@@ -1,0 +1,30 @@
+{
+    "funcionarios": [
+        {"id": "001", "data_admissao": "2023-01-01", "salario": 5000, "departamento_id": "D001", "nome": "Alice", "idade": 30, "cargo": "Engenheira"},
+        {"id": "002", "data_admissao": "2022-06-15", "salario": 4500, "departamento_id": "D002", "nome": "Bob", "idade": 28, "cargo": "Analista"},
+        {"id": "003", "data_admissao": "2021-03-20", "salario": 6000, "departamento_id": "D001", "nome": "Charlie", "idade": 35, "cargo": "Gerente"},
+        {"id": "004", "data_admissao": "2020-11-05", "salario": 7000, "departamento_id": "D003", "nome": "Diana", "idade": 40, "cargo": "Diretora"},
+        {"id": "005", "data_admissao": "2023-02-10", "salario": 4800, "departamento_id": "D002", "nome": "Eve", "idade": 26, "cargo": "Desenvolvedora"},
+        {"id": "006", "data_admissao": "2019-07-22", "salario": 5200, "departamento_id": "D001", "nome": "Frank", "idade": 32, "cargo": "Engenheiro"},
+        {"id": "007", "data_admissao": "2021-12-01", "salario": 4600, "departamento_id": "D003", "nome": "Grace", "idade": 29, "cargo": "Analista"},
+        {"id": "008", "data_admissao": "2020-05-18", "salario": 7500, "departamento_id": "D002", "nome": "Hank", "idade": 38, "cargo": "Gerente"},
+        {"id": "009", "data_admissao": "2022-08-30", "salario": 6800, "departamento_id": "D001", "nome": "Ivy", "idade": 34, "cargo": "Diretora"},
+        {"id": "010", "data_admissao": "2023-03-25", "salario": 4900, "departamento_id": "D003", "nome": "Jack", "idade": 27, "cargo": "Desenvolvedor"},
+        {"id": "011", "data_admissao": "2018-09-14", "salario": 5300, "departamento_id": "D002", "nome": "Kathy", "idade": 31, "cargo": "Engenheira"},
+        {"id": "012", "data_admissao": "2021-04-07", "salario": 4700, "departamento_id": "D001", "nome": "Leo", "idade": 28, "cargo": "Analista"},
+        {"id": "013", "data_admissao": "2019-11-19", "salario": 6200, "departamento_id": "D003", "nome": "Mona", "idade": 36, "cargo": "Gerente"},
+        {"id": "014", "data_admissao": "2020-02-28", "salario": 7100, "departamento_id": "D002", "nome": "Nate", "idade": 39, "cargo": "Diretor"},
+        {"id": "015", "data_admissao": "2022-10-12", "salario": 5000, "departamento_id": "D001", "nome": "Olivia", "idade": 27, "cargo": "Desenvolvedora"},
+        {"id": "016", "data_admissao": "2021-06-03", "salario": 5400, "departamento_id": "D003", "nome": "Paul", "idade": 33, "cargo": "Engenheiro"},
+        {"id": "017", "data_admissao": "2020-08-21", "salario": 4800, "departamento_id": "D002", "nome": "Quinn", "idade": 29, "cargo": "Analista"},
+        {"id": "018", "data_admissao": "2019-03-11", "salario": 6300, "departamento_id": "D001", "nome": "Rita", "idade": 37, "cargo": "Gerente"},
+        {"id": "019", "data_admissao": "2022-12-05", "salario": 7200, "departamento_id": "D003", "nome": "Sam", "idade": 40, "cargo": "Diretor"},
+        {"id": "020", "data_admissao": "2023-05-14", "salario": 5100, "departamento_id": "D002", "nome": "Tina", "idade": 26, "cargo": "Desenvolvedora"}
+    ],
+
+    "departamentos": [
+        {"id": "D001", "nome": "Desenvolvimento"},
+        {"id": "D002", "nome": "Recursos Humanos"},
+        {"id": "D003", "nome": "Financeiro"}
+    ]
+}
