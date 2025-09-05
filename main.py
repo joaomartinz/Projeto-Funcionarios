@@ -12,12 +12,16 @@ def carregar_dados():
         return [], []
     
 def salvar_dados(funcionarios, departamentos):
-    with open("dados.json", "w") as file:
-        dados = {
-            "funcionarios": funcionarios,
-            "departamentos": departamentos
-        }
-        json.dump(dados, file, indent=4)
+    dados = {
+        "funcionarios": [
+            f if isinstance(f, dict) else f.__dict__ for f in funcionarios
+        ],
+        "departamentos": [
+            d if isinstance(d, dict) else d.__dict__ for d in departamentos
+        ]
+    }
+    with open("dados.json", "w", encoding="utf-8") as file:
+        json.dump(dados, file, indent=4, ensure_ascii=False)
 
 empresa = Empresa()
 
@@ -30,7 +34,7 @@ def main():
         empresa.cadastrar_departamento(dept)
 
     for func_data in funcionarios:
-        func = Funcionario(func_data['id'], func_data['data_registro'], func_data['salario'], func_data['departamento_id'], func_data['nome'], func_data['idade'], func_data['cargo'])
+        func = Funcionario(func_data['id'], func_data['data_admissao'], func_data['salario'], func_data['departamento_id'], func_data['nome'], func_data['idade'], func_data['cargo'])
         empresa.cadastrar_funcionario(func)
     
     while True:
@@ -47,17 +51,17 @@ def main():
 
         if escolha == "1":
             id = input("ID: ")
-            data_registro = input("Data de Registro (YYYY-MM-DD): ")
+            data_admissao = input("Data de Admissão (YYYY-MM-DD): ")
             salario = float(input("Salário: "))
             departamento_id = input("ID do Departamento: ")
             nome = input("Nome: ")
             idade = int(input("Idade: "))
             cargo = input("Cargo: ")
-            novo_funcionario = Funcionario(id, data_registro, salario, departamento_id, nome, idade, cargo)
+            novo_funcionario = Funcionario(id, data_admissao, salario, departamento_id, nome, idade, cargo)
             empresa.cadastrar_funcionario(novo_funcionario)
             funcionarios.append({
                 "id": id,
-                "data_registro": data_registro,
+                "data_admissao": data_admissao,
                 "salario": salario,
                 "departamento_id": departamento_id,
                 "nome": nome,
@@ -65,6 +69,7 @@ def main():
                 "cargo": cargo
             }) 
             salvar_dados(funcionarios, departamentos) 
+            
             print("Funcionário cadastrado com sucesso!")
 
         elif escolha == "2":
@@ -77,6 +82,7 @@ def main():
                 "nome": nome
             })
             salvar_dados(funcionarios, departamentos)
+
             print("Departamento cadastrado com sucesso!")
 
         elif escolha == "3":
@@ -88,13 +94,13 @@ def main():
                 print("Funcionário não encontrado.")
 
         elif escolha == "4":
-            funcionarios = empresa.listar_funcionarios()
-            for func in funcionarios:
+            lista_funcionarios = empresa.listar_funcionarios()
+            for func in lista_funcionarios:
                 print(func)
 
         elif escolha == "5":
-            departamentos = empresa.listar_departamentos()
-            for dept in departamentos:
+            lista_departamentos = empresa.listar_departamentos()
+            for dept in lista_departamentos:
                 print(f"Departamento(id={dept.id}, nome={dept.nome})")
 
         elif escolha == "6":
@@ -102,8 +108,9 @@ def main():
             funcionario = empresa.buscar_funcionario_por_id(id)
             if funcionario:
                 empresa.remover_funcionario(funcionario)
-                funcionarios = [f for f in funcionarios if f['id'] != id]
+                funcionarios = [f for f in funcionarios if (isinstance(f, dict) and f["id"] != id)]
                 salvar_dados(funcionarios, departamentos)
+
                 print("Funcionário removido com sucesso!")
             else:
                 print("Funcionário não encontrado.")

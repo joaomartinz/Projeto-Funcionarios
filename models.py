@@ -1,10 +1,10 @@
 class Funcionario:
-    def __init__(self, id, data_registro, salario, departamento_id, nome, idade, cargo):
+    def __init__(self, id, data_admissao, salario, departamento_id, nome, idade, cargo):
         self.nome = nome
         self.idade = idade
         self.cargo = cargo
         self.id = id
-        self.data_registro = data_registro
+        self.data_admissao = data_admissao
         self.salario = salario
         self.departamento_id = departamento_id
 
